@@ -13,7 +13,7 @@ import java.lang.reflect.Field;
 @SpringBootApplication
 public class SpringLearnApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IllegalAccessException {
 		SpringApplication.run(SpringLearnApplication.class, args);
 		ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring.xml");
 
@@ -25,7 +25,7 @@ public class SpringLearnApplication {
 		for (Field field:userService.getClass().getFields()){
 			if(field.isAnnotationPresent(Autowired.class)){
 				//给该对象的该属性赋值
-//				field.set(userService,new OrderService());
+				field.set(userService,new OrderService());
 			}
 		}
 	}
